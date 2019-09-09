@@ -98,5 +98,15 @@ if (!empty($addDate)) {
      // plugin constructor. By default, updates the input 
      // and triggers `change` event.
      'callback' => 'function() { /* ... */ }';   
+     'pluginOptions' => [
+          'ranges' => [
+              'Today' => [date("Y/m/d", strtotime("today")), date("Y/m/d", strtotime("today"))],
+              'Yesterday' => [date("Y/m/d", strtotime("-1 day")), date("Y-m-d", strtotime("-1 day"))],
+              'Last 7 Days' => [date("Y/m/d", strtotime("-7 day")), date("Y/m/d", strtotime("today"))],
+              'Last 30 Days' => [date("Y/m/d", strtotime("-30 day")), date("Y/m/d", strtotime("today"))],
+              'This Month' => [date('Y/m/d', mktime(0, 0, 0, date('m'), '1', date('Y')))],
+              'Last Month' => [ date('Y/m/d', strtotime('-1 month')), date("Y/m/d", strtotime(-date('d').'day'))],
+          ]
+      ],
  ]);
  ?>```
